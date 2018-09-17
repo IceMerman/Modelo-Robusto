@@ -1,0 +1,114 @@
+\documentclass[12pt, letterpaper, titlepage, oneside]{book}
+\usepackage[left=2.5cm, right=2.5cm, top=2.5cm, bottom=2.5cm]{geometry}
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{lmodern}
+\usepackage{color}
+\usepackage{tikz}
+\usepackage{pdfpages}
+\usepackage{url}
+\usepackage{verbatim}
+\usepackage{amssymb}
+\usepackage{mathtools}
+
+\usepackage{etoolbox}
+\usepackage{breqn}
+
+
+
+% Para descripcion de compoenentes de una ecuación o conjunto
+\usepackage{array}
+
+%https://tex.stackexchange.com/questions/95838/how-to-write-a-perfect-equation-parameters-description/95841
+\newenvironment{conditions}
+  {\par\vspace{\abovedisplayskip}\begin{tabular}{>{$}l<{$} @{${}={}$} l}}
+  {\end{tabular}\par\vspace{\belowdisplayskip}}
+
+%Arreglo para que funcione apendix e hypertext
+%Solución en: https://tex.stackexchange.com/questions/58848/ap%C3%A9ndices-appendix-spanish-accent
+\usepackage{appendix}
+\makeatletter
+\appto{\appendices}{\def\Hy@chapapp{Appendix}}
+\makeatother
+\usepackage[colorlinks=true, allcolors=black]{hyperref}
+
+\usepackage[T1]{fontenc}
+% https://tex.stackexchange.com/questions/107869/adding-watermark
+\usepackage{background}
+\backgroundsetup{%
+  scale=3,       %% change accordingly
+  angle=0,       %% change accordingly
+  opacity=.2,    %% change accordingly
+  color = black,  %% change accordingly
+  contents={\begin{tikzpicture}[remember picture, overlay]
+        \node at ([yshift=11pt,xshift=5pt]current page.center) {\includegraphics[width=5cm]{Escudo_UdeA.eps}};    %% yshift and xshift for example only
+    \end{tikzpicture}}
+}
+
+% Chapter    | ch
+% Section    | sx
+% subsection | ssx
+
+% Equation   | eq
+% Figure     | fg
+% Table      | tb
+
+\linespread{1.0}
+\setlength{\parskip}{1.8em}
+
+\author{Diego Aldolfo Mejía-Giraldo, Álvaro Jaramillo-Duque, Juan Esteban Sierra-Aguilar}
+
+\newcommand{\myTitle}{Modelo robusto despacho económico multiperido}
+\title{\myTitle}
+
+\begin{document}
+
+    \begin{titlepage}
+            \centering
+            \vfill
+            {\bfseries\Large
+               \myTitle \\
+                \vskip 3cm
+                \textbf{PhD Álvaro Jaramillo Duque}
+                \\ Investigador principal
+                \vskip 1cm
+                \textbf{PhD Diego Adolfo Mejía}
+                \\ Asesor y autor intelectual
+                \vskip 1cm
+                \textbf{Juan Esteban Sierra Aguilar}
+                \\ Estudiante de ingeniería eléctrica
+                \vskip 1cm
+                \textbf{Universidad de Antioquia \\
+                Facultad de ingeniería \\
+                Departamento de ingeniería eléctrica \\
+                2018-II}
+            }    
+            \vfill
+            %\includegraphics[width=12cm]{todos.png}
+    \end{titlepage}
+    
+    \tableofcontents
+    
+    \backgroundsetup{contents={}}
+    
+    \include{Introduccion}
+    \include{model}
+    \include{modelGen} % No carga, no se la razón
+    
+    %\nocite{*}
+    
+    
+    % anexos, listo
+    \appendix
+    \begin{appendices}
+    
+    \end{appendices}
+    
+    \bibliographystyle{ieeetr}
+    \bibliography{references}
+
+\end{document}
