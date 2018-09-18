@@ -3,7 +3,7 @@
 Con este modelo ...
 
 \section{Conjuntos}
-Los conjuntos usados se muestran a continuación, los superíndices \(HT, W, S\) indican respectivamente, hidrotérmica, eólica y solar.
+Los conjuntos usados se muestran a continuación, los superíndices \(ht, w, s\) indican respectivamente, hidrotérmica, eólica y solar.
 
 \begin{conditions}
     \mathcal{T} & \( \{t_{1}, t_{2}, t_{3}, ...\} \) \\
@@ -21,8 +21,8 @@ t & denota el periodo \(t \in \mathcal{T}\) \\
 l & denota la línea \(l \in \mathcal{L}\) \\
 i & denota la barra \(i \in \mathcal{I} \) \\
 p & denota el generador solar \( p \in \Phi^{s} \) \\
-q & denota el generador eólico \(q \in Phi^{w} \) \\
-j & denota el generador hidro-t+ermico \(j \in Phi^{ht} \)
+q & denota el generador eólico \(q \in \Phi^{w} \) \\
+j & denota el generador hidro-térmico \(j \in \Phi^{ht} \)
 \end{conditions}
 
 \section{Parámetros}
@@ -38,14 +38,10 @@ A continuación ...
 Ecuaciones de generación HT en función de errores de pronósticos (hoja 3)
 
 \begin{equation}
-\tilde{g}_{j,t}=g_{j,t}^{0} + \sum_{q \in \Phi^{w}}\sum_{\tau \le t} \gamma_{j,t,q,\tau}^{w}\tilde{e}_{q,\tau}^{w} + \sum_{p \in \Phi^{s}}\sum_{\tau \le t} \gamma_{j,t,p,\tau}^{s}\tilde{e}_{p,\tau}^{s} + \sum_{\tau \le t}  \gamma_{j,t,\tau}^{d} \sum_{i \in \mathcal{I}}{\tilde{e}_{i,\tau}^{d}}, \ \forall j \in \Phi^{ht}, \forall t \in \mathcal{T}.
+\tilde{g}_{j,t}=g_{j,t}^{0} + \sum_{q \in \Phi^{w}}\sum_{\tau \le t} \gamma_{j,t,q,\tau}^{w}\tilde{e}_{q,\tau}^{w} + \sum_{p \in \Phi^{s}}\sum_{\tau \le t} \gamma_{j,t,p,\tau}^{s}\tilde{e}_{p,\tau}^{s} + \sum_{\tau \le t}  \gamma_{j,t,\tau}^{d} \sum_{b \in \mathcal{I}}{\tilde{e}_{b,\tau}^{d}}, \ \forall j \in \Phi^{ht}, \forall t \in \mathcal{T}.
 \end{equation}
 
 \subsection{Restricciones de flujo máximo y mínimo en las líneas}
-% Falta el para todo..
-\begin{dmath}
-F_{l, t} = \sum_i PTDF_{l, i} \left [ \sum_{q} A^{w}_{i,q} \left ( \hat{g}^{w}_{q, t} + \tilde{e}^{w}_{q,t} \right) + \sum_{p} A^{s}_{i,p} \left ( \hat{g}^{s}_{p, t} + \tilde{e}^{s}_{p,t} \right )  + \sum_j A^{ht}_{i,j} \left ( g^{0}_{i,i} + \sum_g \sum_{t \leqslant  \tau}\gamma^{w}_{i, t, q, \tau} e^{w}_{q,t} + \sum_p \sum_{t \leqslant  \tau}\gamma^{s}_{i, t, p, \tau}e^{s}_{p,t} + \sum_i \sum_{t \leqslant  \tau}\gamma^{s}_{j, t,\tau}e^{d}_{i,t} ) \right ) - \left ( \ \hat{d}_{i,t} + e^{d}_{i, t} \right ) \right]  + \left ( \sum_{b}\sum_{t \leq \tau} U^{d}_{l,t,b,\tau}  + \sum_{q}U^{w}_{l,q,t}+ \sum_{p}U^{s}_{l,t,p,\tau} \right )
-\end{dmath}
 
 Esta es otra versión (13 de septiembre)
 
@@ -64,7 +60,7 @@ F_{l, t} + \sum_{b}\sum_{t \leq \tau} u^{d}_{l,t,b,\tau} + \sum_{q} \sum_{\tau \
 \end{dmath}
 
 
-%F_{l, t} = \sum_i PTDF_{l, i} \left [ \sum_{q} A^{w}_{i,q} \left ( \hat{g}^{w}_{q, t} + \tilde{e}^{w}_{q,t} \right) + \sum_{p} A^{s}_{i,p} \left ( \hat{g}^{s}_{p, t} + \tilde{e}^{s}_{p,t} \right )  + \sum_j A^{ht}_{i,j} \left ( g^{0}_{i,i} + \sum_g \sum_{t \leqslant  \tau}\gamma^{w}_{i, t, q, \tau} e^{w}_{q,t} + \sum_p \sum_{t \leqslant  \tau}\gamma^{s}_{i, t, p, \tau}e^{s}_{p,t} + \sum_i \sum_{t \leqslant  \tau}\gamma^{s}_{j, t,\tau}e^{d}_{i,t} ) \right ) + \left ( \sum_{b}\sum_{t \leqslant  \tau} U^{D}_{l,b,\tau}  + \sum_{q}U^{W}_{l,q,t}+ \sum_{p}U^{W}_{l,p,t} \right ) - \left ( \ \hat{d}_{i,t} + e^{d}_{i, t} \right ) \right]
+%F_{l, t} = \sum_i PTDF_{l, i} \left [ \sum_{q} A^{w}_{i,q} \left ( \hat{g}^{w}_{q, t} + \tilde{e}^{w}_{q,t} \right) + \sum_{p} A^{s}_{i,p} \left ( \hat{g}^{s}_{p, t} + \tilde{e}^{s}_{p,t} \right )  + \sum_j A^{ht}_{i,j} \left ( g^{0}_{i,i} + \sum_g \sum_{t \leqslant  \tau}\gamma^{w}_{i, t, q, \tau} e^{w}_{q,t} + \sum_p \sum_{t \leqslant  \tau}\gamma^{s}_{i, t, p, \tau}e^{s}_{p,t} + \sum_i \sum_{t \leqslant  \tau}\gamma^{s}_{j, t,\tau}e^{d}_{i,t} ) \right ) + \left ( \sum_{b}\sum_{t \leqslant  \tau} U^{d}_{l,b,\tau}  + \sum_{q}U^{w}_{l,q,t}+ \sum_{p}U^{w}_{l,p,t} \right ) - \left ( \ \hat{d}_{i,t} + e^{d}_{i, t} \right ) \right]
 
 caso $\tau = t$
 \begin{equation}
@@ -73,35 +69,50 @@ caso $\tau = t$
 
 caso $\tau \leq t-1$
 \begin{equation}
--u_{l,t,q,\tau}^{w} \le e_{q,t}^{w_{max}} \sum_{i}PTDF_{l,i} \left( \sum_{j}A_{i,j}^{ht} \: \gamma_{j,t,q,\tau}^{w} \right) \le u_{l,t,q,\tau}^{w} , \forall l \in L, \forall q \in \Phi^{w}, \forall \tau \leq t - 1, \forall t \in \mathcal{T}
+-u_{l,t,q,\tau}^{w} \le e_{q,t}^{w, \text{max}} \sum_{i}PTDF_{l,i} \left( \sum_{j}A_{i,j}^{ht} \: \gamma_{j,t,q,\tau}^{w} \right) \le u_{l,t,q,\tau}^{w} , \forall l \in L, \forall q \in \Phi^{w}, \forall \tau \leq t - 1, \forall t \in \mathcal{T}
 \end{equation}
 
 Forma compacta de las dos restricciones anteriores:
 \begin{equation}
--u_{l,t,q,\tau}^{w} \le e_{q,t}^{w_{max}} \sum_{i}PTDF_{l,i} \left( A_{i,q}^w \cdot \mathbf{1}_{\tau = t} + \sum_{j}A_{i,j}^{ht} \: \gamma_{j,t,q,\tau}^{w} \right) \le u_{l,t,q,\tau}^{w} , \forall l \in \mathcal{L}, \forall q \in \Phi^{w}, \forall \tau \leq t, \forall t \in \mathcal{T}
-\end{equation}
-
-\begin{equation}
--U_{l,p,t}^{s} \le e_{p,t}^{S_{max}} \left ( \sum_{i}PTDF_{l,i} \left[ A_{i,p}^S + \sum_{\tau \le t}\sum_{j}A_{i,j}^{HT}\gamma_{j,t,p,\tau}^{S} \right ] \right ) \le U_{l,p,t}^{s} , \forall l \in L, \forall p \in \Phi^{S}, \forall t \in T    
+-u_{l,t,q,\tau}^{w} \le e_{q,t}^{w, \text{max}} \sum_{i}PTDF_{l,i} \left( A_{i,q}^w \cdot \mathbf{1}_{\tau = t} + \sum_{j}A_{i,j}^{ht} \: \gamma_{j,t,q,\tau}^{w} \right) \le u_{l,t,q,\tau}^{w} , \forall l \in \mathcal{L}, \forall q \in \Phi^{w}, \forall \tau \leq t, \forall t \in \mathcal{T}
 \end{equation}
 
 Forma compacta
 \begin{equation}
--u_{l,t,p,\tau}^{s} \le e_{p,t}^{s_{max}} \sum_{i}PTDF_{l,i} \left( A_{i,p}^s \cdot \mathbf{1}_{\tau = t} + \sum_{j}A_{i,j}^{ht} \: \gamma_{j,t,p,\tau}^{s} \right) \le u_{l,t,p,\tau}^{s} , \forall l \in \mathcal{L}, \forall p \in \Phi^{s}, \forall \tau \leq t, \forall t \in \mathcal{T}
+-u_{l,t,p,\tau}^{s} \le e_{p,t}^{s, \text{max}} \sum_{i}PTDF_{l,i} \left( A_{i,p}^s \cdot \mathbf{1}_{\tau = t} + \sum_{j}A_{i,j}^{ht} \: \gamma_{j,t,p,\tau}^{s} \right) \le u_{l,t,p,\tau}^{s} , \forall l \in \mathcal{L}, \forall p \in \Phi^{s}, \forall \tau \leq t, \forall t \in \mathcal{T}
 \end{equation}
 
-\begin{equation}
--U_{l,b,\tau}^{D} \le e_{b,\tau}^{D_{max}} \left ( \sum_{i\ne b}PTDF_{l,i} \sum_{j}A_{i,j}^{ht}\gamma_{j,t,\tau}^{D} \right ) \le U_{l,b,t}^{D} , \forall l \in L, \forall b \in I, \forall t \in T, \forall \tau \le t
-\end{equation}
+Términos de protección con respecto a incertidumbre en demanda:
+
+Caso con todas las barras excepto la de referencia en $\tau = t$:
 
 \begin{equation}
--U_{l,i,\tau}^{D} \le e_{i,\tau}^{D_{max}} \left ( PTDF_{l,i} \sum_{j}A_{i,j}^{ht}\gamma_{j,t,\tau}^{D} \right ) \le U_{l,b,t}^{D} , \forall l \in L, \forall b = i \rightarrow b\in I, \forall \tau \le t
+-u_{l,t,i,t}^{d} \le e_{i,t}^{d, \text{max}} \left ( \sum_{b \in \mathcal{I}'}PTDF_{l,b} \sum_{j}A_{b,j}^{ht} \: \gamma_{j,t,t}^{d} - PTDF_{l,i} \right ) \le u_{l,t,i,t}^{d} , \forall l \in L, \forall i \in \mathcal{I}', \forall t \in T.
 \end{equation}
 
-\begin{equation}
--U_{l,b,t}^{D} \le e_{b,t}^{D_{max}} \left ( \sum_{i\ne b}PTDF_{l,i} \sum_{j}A_{i,j}^{ht}\gamma_{j,t,t}^{D} \right ) \le U_{l,b,t}^{D} , \forall l \in L, \forall b \in I, \forall t \in T
-\end{equation}
+Caso con todas las barras $\forall \tau \leq t-1$:
 
 \begin{equation}
--U_{l,i,t}^{D} \le e_{i,t}^{D_{max}} \left ( PTDF_{l,i} \sum_{j}A_{i,j}^{ht}\gamma_{j,t,t}^{D} -1\right ) \le U_{l,i,t}^{D} , \forall l \in L, \forall b = i \rightarrow b\in I, \forall t \in T
+-u_{l,t,i,\tau}^{d} \le e_{i,\tau}^{d, \text{max}} \left ( \sum_{b \in \mathcal{I}'}PTDF_{l,b} \sum_{j}A_{b,j}^{ht} \: \gamma_{j,t,\tau}^{d} \right ) \le u_{l,t,i,\tau}^{d} , \forall l \in L, \forall i \in I, \forall t \in T, \forall \tau \le t-1.
 \end{equation}
+
+Caso con la barra de referencia $\forall \tau = t$:
+
+\begin{equation}
+-u_{l,t,ref,t}^{d} \le e_{ref,t}^{d, \text{max}} \left ( \sum_{b \in \mathcal{I}'}PTDF_{l,b} \sum_{j}A_{b,j}^{ht} \: \gamma_{j,t,t}^{d} \right ) \le u_{l,t,ref,t}^{d} , \forall l \in L, \forall t \in T.
+\end{equation}
+
+%\begin{equation}
+%-u_{l,t,i,t}^{d} \le e_{i,t}^{d, \text{max}} \left ( PTDF_{l,i} \sum_{j}A_{i,j}^{ht}\: \gamma_{j,t,t}^{d} -1\right ) \le u_{l,t,i,t}^{d} , \forall l \in L, \forall b = i \rightarrow b\in I, \forall t \in T
+%\end{equation}
+
+
+%\begin{equation}
+%-U_{l,i,\tau}^{d} \le e_{i,\tau}^{d, \text{max}} \left ( PTDF_{l,i} \sum_{j}A_{i,j}^{ht}\gamma_{j,t,\tau}^{d} \right ) \le U_{l,b,t}^{d} , \forall l \in L, \forall b = i \rightarrow b\in I, \forall \tau \le t
+%\end{equation}
+
+%\begin{equation}
+%-U_{l,b,t}^{d} \le e_{b,t}^{d, \text{max}} \left ( \sum_{i\ne b}PTDF_{l,i} \sum_{j}A_{i,j}^{ht}\gamma_{j,t,t}^{d} \right ) \le U_{l,b,t}^{d} , \forall l \in L, \forall b \in I, \forall t \in T
+%\end{equation}
+
+
