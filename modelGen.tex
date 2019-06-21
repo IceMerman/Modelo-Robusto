@@ -3,73 +3,171 @@
 \section{Límties de generación en nodos diferentes al nodo de referencias}
 
 \begin{equation}
-g^{0}_{j,t} + \sum_{\tau \le t} \left( \sum_{q}U^{g,w}_{j,t,q,\tau} + \sum_{p}U^{g,s}_{j,t,p,\tau} + \sum_{i}U^{g,d}_{j,t,i,\tau} \right ) \le g^{\text{max}}_{i,t}, \forall j \in \Phi^{ht},t \in T
+g^{0}_{j,t} + \sum_{\tau \le t} \left( \sum_{q}U^{g,w}_{j,t,q,\tau} + \sum_{p}U^{g,s}_{j,t,p,\tau} + \sum_{i}U^{g,d}_{j,t,i,\tau} \right ) \le g^{\text{max}}_{i,t}x_{j,t}.
 \end{equation}
+\begin{equation*}
+    \forall j \in \Phi^{ht},t \in \mathcal{T}.
+\end{equation*}
 
 \begin{equation}
--g^{0}_{j,t} + \sum_{\tau \le t} \left( \sum_{q}U^{g,w}_{j,t,q,\tau} + \sum_{p}U^{g,s}_{j,t,p,\tau} + \sum_{i}U^{g,d}_{j,t,i,\tau} \right ) \le -g^{min}_{i,t}, \forall j \in \Phi^{ht},t \in T
+-g^{0}_{j,t} + \sum_{\tau \le t} \left( \sum_{q}U^{g,w}_{j,t,q,\tau} + \sum_{p}U^{g,s}_{j,t,p,\tau} + \sum_{i}U^{g,d}_{j,t,i,\tau} \right ) \le -g^{min}_{i,t}x_{j,t}.
 \end{equation}
+\begin{equation*}
+    \forall j \in \Phi^{ht},t \in \mathcal{T}.
+\end{equation*}
+%
+\begin{equation}
+%-U^{g,w}_{j,t,q,\tau} \le \left( \gamma^{w}_{j,t,q,\tau} + \mathbf{1}_{\tau = t}\right ) e^{w, \text{max}}_{q,t} \leq U^{g,w}_{j,t,q,\tau}.
+-U^{g,w}_{j,t,q,\tau} \le \gamma^{w}_{j,t,q,\tau} e^{w, \text{max}}_{q,t} \leq U^{g,w}_{j,t,q,\tau}.
+\end{equation}
+\begin{equation*}
+    \forall j \in \Phi^{ht}, t \in T,q \in \Phi^{w},\tau \le t.
+\end{equation*}
 
 \begin{equation}
--U^{g,w}_{j,t,q,\tau} \le \gamma^{w}_{j,t,q,\tau}e^{w, \text{max}}_{q,t} \leq U^{g,w}_{j,t,q,\tau}, \forall j \in \Phi^{ht}, t \in T,q \in \Phi^{w},\tau \le t
+-U^{g,s}_{j,t,p,\tau} \le \gamma^{s}_{j,t,p,\tau} e^{s, \text{max}}_{p,t} \leq U^{g,s}_{j,t,p,\tau}.
 \end{equation}
+\begin{equation*}
+    \forall j \in \Phi^{ht},t \in T,q \in \Phi^{w},\tau \le t.
+\end{equation*}
 
 \begin{equation}
--U^{g,s}_{j,t,p,\tau} \le \gamma^{s}_{j,t,p,\tau}e^{s, \text{max}}_{p,t} \leq U^{g,s}_{j,t,p,\tau}, \forall j \in \Phi^{ht},t \in T,q \in \Phi^{w},\tau \le t
+-U^{g,d}_{j,t,i,\tau} \leq \gamma^{d}_{j,t,\tau} e^{d, \text{max}}_{i,t} \leq U^{g,d}_{j,t,i,\tau}.
 \end{equation}
+\begin{equation*}
+    \forall j \in \Phi^{ht},t \in T,q \in \Phi^{w},\tau \le t.
+\end{equation*}
 
-\begin{equation}
--U^{g,d}_{j,t,i,\tau} \le \gamma^{s}_{j,t,\tau}e^{s, \text{max}}_{i,t} \leq U^{g,d}_{j,t,i,\tau}, \forall j \in \Phi^{ht},t \in T,q \in \Phi^{w},\tau \le t
-\end{equation}
-
-\section{Límites de generación en el nodo de referencias}
+\section{Límites de generación en el nodo de referencia}
 
 \begin{dmath}
 -\sum_{j} g^{0}_{j,t} + \sum_{i} \left ( U^{ref, d}_{i,\tau,\tau} + \sum_{\tau \lessdot  t} U^{ref,d}_{i,t,\tau} \right ) + \sum_{q} \left ( U^{ref, w}_{q,\tau,\tau} + \sum_{\tau \lessdot t} U^{ref,w}_{q,t,\tau} \right ) + \sum_{p} \left ( U^{ref, s}_{p,\tau,\tau} + \sum_{\tau \lessdot t} U^{ref,s}_{p,t,\tau} \right ) \le g^{ref, \text{max}} + \sum_{q} \hat{g}^{w}_{q,t} + \sum_{p} \hat{g}^{s}_{p,t} - \sum_{i} \hat{d}_{i,t}
 \end{dmath}
+\begin{equation*}
+     \forall l \in L, \forall t \in T.
+\end{equation*}
 
 \begin{dmath}
 \sum_{j} g^{0}_{j,t} + \sum_{i} \left ( U^{ref, d}_{i,\tau,\tau} + \sum_{\tau \lessdot  t} U^{ref,d}_{i,t,\tau} \right ) + \sum_{q} \left ( U^{ref, w}_{q,\tau,\tau} + \sum_{\tau \lessdot t} U^{ref,w}_{q,t,\tau} \right ) + \sum_{p} \left ( U^{ref, s}_{p,\tau,\tau} + \sum_{\tau \lessdot t} U^{ref,s}_{p,t,\tau} \right ) \le -g^{refMin} - \sum_{q} \hat{g}^{w}_{q,t} - \sum_{p} \hat{g}^{s}_{p,t} + \sum_{i} \hat{d}_{i,t}
 \end{dmath}
+\begin{equation*}
+     \forall l \in L, \forall t \in T.
+\end{equation*}
 
 \begin{equation}
--U_{i,t,t}^{ref,d} \le \left ( 1 - \sum_{j} \gamma_{j,t,t}^{d} \right )e_{i,t}^{d, \text{max}} \le U_{i,t,t}^{ref,d}, \forall i \in I, \forall t \in T
+-U_{i,t,t}^{ref,d} \le \left ( 1 - \sum_{jj} \gamma_{jj,t,t}^{d} \right )e_{i,t}^{d, \text{max}} \le U_{i,t,t}^{ref,d}.
 \end{equation}
+\begin{equation*}
+    \forall i \in I, \forall t \in T, j|j \rightarrow \text{ref}.
+\end{equation*}
 
 \begin{equation}
--U_{i,t,\tau}^{ref,d} \le \left (\sum_{j} \gamma_{j,t,t}^{d} \right )e_{i,\tau}^{d, \text{max}} \le U_{i,t,\tau}^{ref,d}, \forall i \in I, \forall \tau \in T
+-U_{i,t,\tau}^{ref,d} \le \left (\sum_{jj} \gamma_{jj,t,t}^{d} \right )e_{i,\tau}^{d, \text{max}} \le U_{i,t,\tau}^{ref,d}.
 \end{equation}
+\begin{equation*}
+    \forall i \in I, \forall \tau \in T, j|j \rightarrow \text{ref}.
+\end{equation*}
 
 \begin{equation}
--U_{q,t,t}^{ref,w} \le \left (1 + \sum_{j} \gamma_{j,t,q,t}^{w} \right )e_{q,t}^{w, \text{max}} \le U_{q,t,t}^{ref,w}, \forall q \in \Phi^{w}, \forall t \in T
+-U_{j,q,t,t}^{ref,w} \le \left (1 + \sum_{jj} \gamma_{jj,t,q,t}^{w} \right )e_{q,t}^{w, \text{max}} \le U_{q,t,t}^{ref,w}.
 \end{equation}
+\begin{equation*}
+    \forall q \in \Phi^{w}, \forall t \in T, j|j \rightarrow \text{ref}.
+\end{equation*}
 % Error usando \Tau
 \begin{equation}
--U_{q,t,\tau}^{ref,w} \le \left (\sum_{j} \gamma_{j,t,q,\tau}^{w} \right )e_{q,\tau}^{w, \text{max}} \le U_{q,t,\tau}^{ref,w}, \forall q \in \Phi^{w}, \forall \tau \in T
+-U_{j,q,t,\tau}^{ref,w} \le \left (\sum_{jj} \gamma_{jj,t,q,\tau}^{w} \right )e_{q,\tau}^{w, \text{max}} \le U_{q,t,\tau}^{ref,w}.
 \end{equation}
+\begin{equation*}
+    \forall q \in \Phi^{w}, \forall \tau \in T, j|j \rightarrow \text{ref}.
+\end{equation*}
 
 \begin{equation}
--U_{p,t,t}^{ref,s} \le \left (1 + \sum_{j} \gamma_{j,t,p,t}^{s} \right )e_{p,t}^{s, \text{max}} \le U_{p,t,t}^{ref,s}, \forall p \in \Phi^{s}, \forall t \in T
+-U_{j,p,t,t}^{ref,s} \le \left (1 + \sum_{jj} \gamma_{jj,t,p,t}^{s} \right )e_{p,t}^{s, \text{max}} \le U_{p,t,t}^{ref,s}.
 \end{equation}
+\begin{equation*}
+    \forall p \in \Phi^{s}, \forall t \in T, j|j \rightarrow \text{ref}.
+\end{equation*}
 
 \begin{equation}
--U_{p,t,\tau}^{ref,s} \le \left (\sum_{j} \gamma_{j,t,p,\tau}^{s} \right )e_{p,t}^{s, \text{max}} \le U_{p,t,\tau}^{ref,s}, \forall p \in \Phi^{s}, \forall \tau \in T
+-U_{j,p,t,\tau}^{ref,s} \le \left (\sum_{jj} \gamma_{jj,t,p,\tau}^{s} \right )e_{p,t}^{s, \text{max}} \le U_{p,t,\tau}^{ref,s}.
 \end{equation}
+\begin{equation*}
+    \forall p \in \Phi^{s}, \forall \tau \in T, j|j \rightarrow \text{ref}.
+\end{equation*}
 
-\section{Rampas de subida y bajada}
+\section{Rampas de subida y bajada en generadores diferentes al slack}
 
 \begin{dmath}
--R^{down}_{j,t} \le g^{0}_{j,t} - g^{0}_{j,t-1} + \sum_{q}u^{rup,w}_{j,t,q,\tau} + \sum_{p}u^{rup,s}_{j,t,p,\tau} + \sum_iu^{rup,d}_{j,t,i,\tau} + \sum_{t\le \tau} \left[ \sum_{q}u^{rup,w}_{j,t,q,\tau} + \sum_{p}u^{rup,s}_{j,t,p,\tau} + \sum_iu^{rup,d}_{j,t,i,\tau} \right ] \le -R^{up}_{j,t}, \: \forall j, \forall t
+-R^{down}_{j,t} \le g^{0}_{j,t} - g^{0}_{j,t-1} + \sum_{q}u^{rup,w}_{j,\tau,q,\tau} + \sum_{p}u^{rup,s}_{j,\tau,p,\tau} + \sum_iu^{rup,d}_{j,\tau,i,\tau} + \sum_{t\le \tau} \left[ \sum_{q}u^{rup,w}_{j,t,q,\tau} + \sum_{p}u^{rup,s}_{j,t,p,\tau} + \sum_iu^{rup,d}_{j,t,i,\tau} \right ] \le R^{up}_{j,t}.
 \end{dmath}
+\begin{equation*}
+    \forall j, \forall t \gtrdot 0.
+\end{equation*}
 
 \subsection{Factores de protección}
 
 %Wind
 
 \begin{equation}
--u^{rup,w}_{j,t,q,\tau} \le \gamma^{w}_{j,t,q,\tau}\cdot e^{w, \text{max}}_{q,t} \le u^{rup,w}_{j,t,q,\tau}, \forall j,t,q
+-u^{rup,w}_{j,t,q,\tau} \le \gamma^{w}_{j,t,q,\tau}\cdot e^{w, \text{max}}_{q,t} \le u^{rup,w}_{j,t,q,\tau}.
 \end{equation}
+\begin{equation*}
+    \forall j, t, q.
+\end{equation*}
 
 \begin{equation}
--u^{rup,w}_{j,t,q,\tau} \le \left[ \gamma^{w}_{j,t,q,\tau} - \gamma^{w}_{j,t-1,q,\tau} \right ] \cdot e^{w, \text{max}}_{q,t} \le u^{rup,w}_{j,t,q,\tau}, \forall j,t,q    
+-u^{rup,w}_{j,t,q,\tau} \le \left[ \gamma^{w}_{j,t,q,\tau} - \gamma^{w}_{j,t-1,q,\tau} \right ] \cdot e^{w, \text{max}}_{q,t} \le u^{rup,w}_{j,t,q,\tau}.
 \end{equation}
+\begin{equation*}
+    \forall j,t \gtrdot 0,q.
+\end{equation*}
+
+\begin{equation}
+    -u^{rup,s}_{j,t,p,\tau} \le \gamma^{s}_{j,t,p,\tau}\cdot e^{s, \text{max}}_{p,t} \le u^{rup,w}_{j,t,p,\tau}.
+\end{equation}
+\begin{equation*}
+    \forall j, t, p.
+\end{equation*}
+
+\begin{equation}
+    -u^{rup,s}_{j,t,p,\tau} \le \left[ \gamma^{s}_{j,t,p,\tau} - \gamma^{s}_{j,t-1,p,\tau} \right ] \cdot e^{s, \text{max}}_{p,t} \le u^{rup,s}_{j,t,p,\tau}.
+\end{equation}
+\begin{equation*}
+    \forall j,t \gtrdot 0,p.
+\end{equation*}
+
+\begin{equation}
+    -u^{rup,D}_{j,t,i,\tau} \le \gamma^{D}_{j,t,\tau} \cdot e^{D, \text{max}}_{i,t} \le u^{rup,D}_{j,t,i,\tau}.
+\end{equation}
+\begin{equation*}
+    \forall j, t, i.
+\end{equation*}
+
+\begin{equation}
+    -u^{rup,D}_{j,t,i,\tau} \le \left[ \gamma^{D}_{j,t,\tau} - \gamma^{D}_{j,t-1,\tau} \right ] \cdot e^{D, \text{max}}_{i,t} \le u^{rup,D}_{j,t,i,\tau}.
+\end{equation}
+\begin{equation*}
+    \forall j, t \gtrdot 0 , i.
+\end{equation*}
+
+\section{Rampas de subida y bajada la barra de referencia}
+
+\begin{equation*}
+-r^{down}_j \le g_{j,t} - g_{j,t-1} \le r^{up}_{j}.
+\end{equation*}
+
+\begin{equation*}
+g_{ref,t} = \sum_{i}d_{i,t} - \sum_{j}g_{j,t}.
+\end{equation*}
+
+\begin{equation*}
+-r^{down}_{ref} \le \sum_{i}d_{i,t} - \sum_{j}g_{j,t} - \sum_{i}d_{i,t-1} + \sum_{j}g_{j,t-1} \le r^{up}_{ref}.
+\end{equation*}
+
+\begin{equation}
+-r^{down}_{ref} \le \sum_{i}(d_{i,t} - d_{i,t-1}) - \sum_{j}(g_{j,t} - g_{j,t-1}) \le r^{up}_{ref}, \forall i \in \mathcal{I}'.
+\end{equation}
+\begin{equation*}
+    \forall j \in \mathcal{J}'.
+\end{equation*}
