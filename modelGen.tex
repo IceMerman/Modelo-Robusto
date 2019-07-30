@@ -158,12 +158,18 @@ g^{0}_{j,t} + \sum_{\tau \le t} \left( \sum_{q}U^{g,w}_{j,t,q,\tau} + \sum_{p}U^
 \end{equation*}
 
 \begin{equation*}
-g_{ref,t} = \sum_{i}d_{i,t} - \sum_{j}g_{j,t}.
+g_{ref,t} = \sum_{i}d_{i,t} - \sum_{j}g_{j,t} - \sum_{q}{g}^{w}_{q, t} - \sum_{p}{g}^{s}_{p, t}.
 \end{equation*}
 
 \begin{equation*}
--r^{down}_{ref} \le \sum_{i}d_{i,t} - \sum_{j}g_{j,t} - \sum_{i}d_{i,t-1} + \sum_{j}g_{j,t-1} \le r^{up}_{ref}.
+-r^{down}_{ref} \le \sum_{i}d_{i,t} - \sum_{j}g_{j,t} - \sum_{q}{g}^{w}_{q, t} - \sum_{p}{g}^{s}_{p, t} - \left ( \sum_{i}d_{i,t-1} - \sum_{j}g_{j,t-1} - \sum_{q}{g}^{w}_{q, t-1} - \sum_{p}{g}^{s}_{p, t-1} \right ) \le r^{up}_{ref}.
 \end{equation*}
+
+\begin{align*}
+-r^{down}_{ref} &\le \sum_{i}d_{i,t} - \sum_{i}d_{i,t-1}  \\
+ & - \sum_{j}g_{j,t} + \sum_{j}g_{j,t-1} \\
+ & - \sum_{q}{g}^{w}_{q, t} + \sum_{q}{g}^{w}_{q, t-1} \\ & -\sum_{p}{g}^{s}_{p, t} + \sum_{p}{g}^{s}_{p, t-1} \le r^{up}_{ref}.
+\end{align*}
 
 \begin{equation}
 -r^{down}_{ref} \le \sum_{i}(d_{i,t} - d_{i,t-1}) - \sum_{j}(g_{j,t} - g_{j,t-1}) \le r^{up}_{ref}, \forall i \in \mathcal{I}'.
@@ -171,3 +177,12 @@ g_{ref,t} = \sum_{i}d_{i,t} - \sum_{j}g_{j,t}.
 \begin{equation*}
     \forall j \in \mathcal{J}'.
 \end{equation*}
+
+\begin{align*}
+    \sum_{i}(d_{i,t} - d_{i,t-1}) - \sum_{j}(g_{j,t} - g_{j,t-1}) \\
+    \sum_{i}(d_{i,t} - d_{i,t-1}) - \sum_{j}(g_{j,t} - g_{j,t-1}) \\
+\end{align*}
+
+\begin{dmath*}
+    \sum_{q} \left ( \bar{g}^{w}_{q, t} + \bar{e}^{w}_{q,t} \right) + \sum_{p} \left ( \bar{g}^{s}_{p, t} + \bar{e}^{s}_{p,t} \right ) + \sum_{j} \left ( g^{0}_{j,t} + \sum_{q} \sum_{t \leqslant  \tau}\gamma^{w}_{j, t, q, \tau} \bar{e}^{w}_{q,t} + \sum_p \sum_{t \leqslant  \tau}\gamma^{s}_{j, t, p, \tau}\bar{e}^{s}_{p,t} + \sum_i \sum_{t \leqslant  \tau}\gamma^{d}_{j, t,\tau}\bar{e}^{d}_{i,t} ) \right ) - \left (\bar{d}_{i,t} + \bar{e}^{d}_{i, t} \right )
+\end{dmath*}
