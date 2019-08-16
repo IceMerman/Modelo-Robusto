@@ -42,13 +42,19 @@ Estás ecuaciones puede reescribirse en términos del precio de generación del 
 
 \begin{align*}
     F.O. &= \sum_{t\in\mathcal{T}}\sum_{j\in\Phi^{ht}}c^{var}_{j}g_{j,t}^{0} \\
-    & \sum_{t\in\mathcal{T}}\sum_{j\in\Phi^{ht}|j\ne ref}c^{var}_{j}g_{j,t}^{0} + c^{var}_{j=ref}g_{j=ref,t}^{0} \\
-    & \sum_{t\in\mathcal{T}}\sum_{j\in\Phi^{ht}|j\ne ref}c^{var}_{j}g_{j,t}^{0} + c^{var}_{j=ref}\left ( \sum_{i}{d_{i}} - \sum_{j\in\Phi^{ht}|j\ne ref}c^{var}_{j}g_{j,t}^{0} \right ) \\
-    & \sum_{t\in\mathcal{T}}\sum_{j\in\Phi^{ht}|j\ne ref}g_{j,t}^{0} \left ( c^{var}_{j} - c^{var}_{j=ref} \right ) + c^{var}_{j=ref}\,\sum_{i}{d_{i}}
+    &= \sum_{t\in\mathcal{T}}\sum_{j\in\Phi^{ht}|j\ne ref}c^{var}_{j}g_{j,t}^{0} + c^{var}_{j=ref}g_{j=ref,t}^{0} \\
+    &= \sum_{t\in\mathcal{T}}\sum_{j\in\Phi^{ht}|j\ne ref}c^{var}_{j}g_{j,t}^{0} + c^{var}_{j=ref}\left ( \sum_{i}{d_{i}} - \sum_{j\in\Phi^{ht}|j\ne ref}c^{var}_{j}g_{j,t}^{0} \right ) \\
+    &= \sum_{t\in\mathcal{T}}\sum_{j\in\Phi^{ht}|j\ne ref}g_{j,t}^{0} \left ( c^{var}_{j} - c^{var}_{j=ref} \right ) + c^{var}_{j=ref}\,\sum_{i}{d_{i}}
 \end{align*}
 
 De esta forma, reescribiendo la función objetivo con los términos de protección se tiene:
 
 \begin{align}
     \text{minize} & \sum_{t\in\mathcal{T}}\sum_{j\in\Phi^{ht}|j\ne ref}g_{j,t}^{0} \left ( c^{var}_{j} - c^{var}_{j=ref} \right ) + c^{var}_{j=ref}\,\sum_{i}{d_{i}} \\ & + \sum_{q \in \Phi^{w}} \sum_{\tau\in\mathcal{T}} u_{q,\tau}^{f_0, w} + \sum_{p \in \Phi^{s}} \sum_{\tau\in\mathcal{T}} u_{p,\tau}^{f_0, s} + \sum_{b \in \mathcal{I}} \sum_{\tau\in\mathcal{T}} u_{b,\tau}^{f_0, d} \nonumber
+\end{align}
+
+\begin{align}
+-u_{q,\tau}^{f_0, w} & \le e_{q,\tau}^{w, \text{max}} \sum_{j\in\Phi^{ht}} \sum_{t \ge \tau} \gamma_{j,t,q,\tau}^{w} \: c^{var}_{j} \le u_{q,\tau}^{f_0, w}, \ \ & \forall q \in \Phi^{w}, \tau \in \mathcal{T}.\\
+-u_{p,\tau}^{f_0, s} & \le e_{p,\tau}^{s, \text{max}} \sum_{j\in\Phi^{ht}} \sum_{t \ge \tau} \gamma_{j,t,p,\tau}^{s} \: c^{var}_{j} \le u_{p,\tau}^{f_0, s}, \ \ & \forall p \in \Phi^{s}, \tau \in \mathcal{T}. \\
+-u_{b,\tau}^{f_0, d} & \le e_{b,\tau}^{d, \text{max}} \sum_{j\in\Phi^{ht}} \sum_{t \ge \tau} \gamma_{j,t,\tau}^{d} \: c^{var}_{j} \le u_{b,\tau}^{f_0, d}, \ \ & \forall b \in \Phi^{s}, \tau \in \mathcal{T}.
 \end{align}
