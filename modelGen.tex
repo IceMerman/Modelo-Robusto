@@ -55,42 +55,42 @@ g^{0}_{j,t} + \sum_{\tau \le t} \left( \sum_{q}U^{g,w}_{j,t,q,\tau} + \sum_{p}U^
 \end{equation*}
 
 \begin{equation}
--U_{i,t,t}^{ref,d} \le \left ( 1 - \sum_{jj} \gamma_{jj,t,t}^{d} \right )e_{i,t}^{d, \text{max}} \le U_{i,t,t}^{ref,d}.
+-U_{i,t,t}^{ref,d} \le \left ( 1 - \sum_{jj \neq{ref}} \gamma_{jj,t,t}^{d} \right )e_{i,t}^{d, \text{max}} \le U_{i,t,t}^{ref,d}.
 \end{equation}
 \begin{equation*}
     \forall i \in I, \forall t \in T, j|j \rightarrow \text{ref}.
 \end{equation*}
 
 \begin{equation}
--U_{i,t,\tau}^{ref,d} \le \left (\sum_{jj} \gamma_{jj,t,t}^{d} \right )e_{i,\tau}^{d, \text{max}} \le U_{i,t,\tau}^{ref,d}.
+-U_{i,t,\tau}^{ref,d} \le \left (\sum_{jj \neq{} ref} \gamma_{jj,t,t}^{d} \right )e_{i,\tau}^{d, \text{max}} \le U_{i,t,\tau}^{ref,d}.
 \end{equation}
 \begin{equation*}
     \forall i \in I, \forall \tau \in T, j|j \rightarrow \text{ref}.
 \end{equation*}
 
 \begin{equation}
--U_{j,q,t,t}^{ref,w} \le \left (1 + \sum_{jj} \gamma_{jj,t,q,t}^{w} \right )e_{q,t}^{w, \text{max}} \le U_{q,t,t}^{ref,w}.
+-U_{j,q,t,t}^{ref,w} \le \left (1 + \sum_{jj \neq{} ref} \gamma_{jj,t,q,t}^{w} \right )e_{q,t}^{w, \text{max}} \le U_{q,t,t}^{ref,w}.
 \end{equation}
 \begin{equation*}
     \forall q \in \Phi^{w}, \forall t \in T, j|j \rightarrow \text{ref}.
 \end{equation*}
 % Error usando \Tau
 \begin{equation}
--U_{j,q,t,\tau}^{ref,w} \le \left (\sum_{jj} \gamma_{jj,t,q,\tau}^{w} \right )e_{q,\tau}^{w, \text{max}} \le U_{q,t,\tau}^{ref,w}.
+-U_{j,q,t,\tau}^{ref,w} \le \left (\sum_{jj \neq{} ref} \gamma_{jj,t,q,\tau}^{w} \right )e_{q,\tau}^{w, \text{max}} \le U_{q,t,\tau}^{ref,w}.
 \end{equation}
 \begin{equation*}
     \forall q \in \Phi^{w}, \forall \tau \in T, j|j \rightarrow \text{ref}.
 \end{equation*}
 
 \begin{equation}
--U_{j,p,t,t}^{ref,s} \le \left (1 + \sum_{jj} \gamma_{jj,t,p,t}^{s} \right )e_{p,t}^{s, \text{max}} \le U_{p,t,t}^{ref,s}.
+-U_{j,p,t,t}^{ref,s} \le \left (1 + \sum_{jj \neq{} ref} \gamma_{jj,t,p,t}^{s} \right )e_{p,t}^{s, \text{max}} \le U_{p,t,t}^{ref,s}.
 \end{equation}
 \begin{equation*}
     \forall p \in \Phi^{s}, \forall t \in T, j|j \rightarrow \text{ref}.
 \end{equation*}
 
 \begin{equation}
--U_{j,p,t,\tau}^{ref,s} \le \left (\sum_{jj} \gamma_{jj,t,p,\tau}^{s} \right )e_{p,t}^{s, \text{max}} \le U_{p,t,\tau}^{ref,s}.
+-U_{j,p,t,\tau}^{ref,s} \le \left (\sum_{jj \neq{} ref} \gamma_{jj,t,p,\tau}^{s} \right )e_{p,t}^{s, \text{max}} \le U_{p,t,\tau}^{ref,s}.
 \end{equation}
 \begin{equation*}
     \forall p \in \Phi^{s}, \forall \tau \in T, j|j \rightarrow \text{ref}.
@@ -172,89 +172,126 @@ g_{ref,t} = \sum_{i}d_{i,t} - \sum_{j}g_{j,t} - \sum_{q}{g}^{w}_{q, t} - \sum_{p
 \end{align*}
 
 \begin{dmath*}
-    \sum_{q} \left ( \bar{g}^{w}_{q, t} + \bar{e}^{w}_{q,t} \right) + \sum_{p} \left ( \bar{g}^{s}_{p, t} + \bar{e}^{s}_{p,t} \right ) + \sum_{j} \left ( g^{0}_{j,t} + \sum_{q} \sum_{t \leqslant  \tau}\gamma^{w}_{j, t, q, \tau} \bar{e}^{w}_{q,\tau} + \sum_p \sum_{t \leqslant  \tau}\gamma^{s}_{j, t, p, \tau}\bar{e}^{s}_{p,\tau} + \sum_i \sum_{t \leqslant  \tau}\gamma^{d}_{j, t,\tau}\bar{e}^{d}_{i,\tau} ) \right ) - \left (\bar{d}_{i,t} + \bar{e}^{d}_{i, t} \right ) - \left ( \sum_{q} \left ( \bar{g}^{w}_{q, t-1} + \bar{e}^{w}_{q,t-1} \right) + \sum_{p} \left ( \bar{g}^{s}_{p, t-1} + \bar{e}^{s}_{p,t-1} \right ) + \sum_{j} \left ( g^{0}_{j,t-1} + \sum_{q} \sum_{t \leqslant  \tau}\gamma^{w}_{j, t-1, q, \tau} \bar{e}^{w}_{q,\tau} + \sum_p \sum_{t \leqslant  \tau}\gamma^{s}_{j, t-1, p, \tau}\bar{e}^{s}_{p,\tau-1} + \sum_i \sum_{t-1 \leqslant  \tau}\gamma^{d}_{j, t-1,\tau}\bar{e}^{d}_{i,\tau} ) \right ) - \left (\bar{d}_{i,t-1} + \bar{e}^{d}_{i, t-1} \right ) \right )
+    \sum_{q} \left ( \bar{g}^{w}_{q, t} + \bar{e}^{w}_{q,t} \right) + \sum_{p} \left ( \bar{g}^{s}_{p, t} + \bar{e}^{s}_{p,t} \right ) + \sum_{j} \left ( g^{0}_{j,t} + \sum_{q} \sum_{\tau \leqslant  t}\gamma^{w}_{j, t, q, \tau} \bar{e}^{w}_{q,\tau} + \sum_p \sum_{\tau \leqslant  t}\gamma^{s}_{j, t, p, \tau}\bar{e}^{s}_{p,\tau} + \sum_i \sum_{\tau \leqslant  t}\gamma^{d}_{j, t,\tau}\bar{e}^{d}_{i,\tau} ) \right ) - \left (\bar{d}_{i,t} + \bar{e}^{d}_{i, t} \right ) - \left ( \sum_{q} \left ( \bar{g}^{w}_{q, t-1} + \bar{e}^{w}_{q,t-1} \right) + \sum_{p} \left ( \bar{g}^{s}_{p, t-1} + \bar{e}^{s}_{p,t-1} \right ) + \sum_{j} \left ( g^{0}_{j,t-1} + \sum_{q} \sum_{\tau \leqslant  t}\gamma^{w}_{j, t-1, q, \tau} \bar{e}^{w}_{q,\tau} + \sum_p \sum_{\tau \leqslant  t}\gamma^{s}_{j, t-1, p, \tau}\bar{e}^{s}_{p,\tau-1} + \sum_i \sum_{\tau \leqslant  t-1}\gamma^{d}_{j, t-1,\tau}\bar{e}^{d}_{i,\tau} ) \right ) - \left (\bar{d}_{i,t-1} + \bar{e}^{d}_{i, t-1} \right ) \right )
 \end{dmath*}
 
 \begin{dmath*}
-    \sum_{q} \left ( \bar{g}^{w}_{q, t} - \bar{g}^{w}_{q, t-1} + \bar{e}^{w}_{q,t} - \bar{e}^{w}_{q,t-1} \right) + \sum_{p} \left ( \bar{g}^{s}_{p, t} - \bar{g}^{s}_{p, t-1} + \bar{e}^{s}_{p,t} - \bar{e}^{s}_{p,t-1} \right ) + \sum_{j\neq{slack}} \left ( g^{0}_{j,t} - g^{0}_{j,t-1} + \sum_{q} \sum_{t \leqslant  \tau}\gamma^{w}_{j, t, q, \tau} \bar{e}^{w}_{q,\tau} - \sum_{q} \sum_{t-1 \leqslant  \tau}\gamma^{w}_{j, t-1, q, \tau} \bar{e}^{w}_{q,\tau} + \sum_{p} \sum_{t \leqslant  \tau}\gamma^{s}_{j, t, p, \tau}\bar{e}^{s}_{p,\tau} - \sum_{p} \sum_{t-1 \leqslant  \tau}\gamma^{s}_{j, t-1, p, \tau}\bar{e}^{s}_{p,\tau} + \sum_{i} \sum_{t \leqslant  \tau}\gamma^{d}_{j, t,\tau}\bar{e}^{d}_{i,\tau} ) - \sum_{i} \sum_{t-1 \leqslant  \tau}\gamma^{d}_{j, t-1,\tau}\bar{e}^{d}_{i,\tau} \right ) - \sum_{i} \left (\bar{d}_{i,t} - \bar{d}_{i,t-1} + \bar{e}^{d}_{i, t} - \bar{e}^{d}_{i, t-1} \right ) 
+    \sum_{q} \left ( \bar{g}^{w}_{q, t} - \bar{g}^{w}_{q, t-1} + \bar{e}^{w}_{q,t} - \bar{e}^{w}_{q,t-1} \right) + \sum_{p} \left ( \bar{g}^{s}_{p, t} - \bar{g}^{s}_{p, t-1} + \bar{e}^{s}_{p,t} - \bar{e}^{s}_{p,t-1} \right ) + \sum_{j\neq{ref}} \left ( g^{0}_{j,t} - g^{0}_{j,t-1} + \sum_{q} \sum_{\tau \leqslant  t}\gamma^{w}_{j, t, q, \tau} \bar{e}^{w}_{q,\tau} - \sum_{q} \sum_{\tau \leqslant  t-1}\gamma^{w}_{j, t-1, q, \tau} \bar{e}^{w}_{q,\tau} + \sum_{p} \sum_{\tau \leqslant  t}\gamma^{s}_{j, t, p, \tau}\bar{e}^{s}_{p,\tau} - \sum_{p} \sum_{\tau \leqslant  t-1}\gamma^{s}_{j, t-1, p, \tau}\bar{e}^{s}_{p,\tau} + \sum_{i} \sum_{\tau \leqslant  t}\gamma^{d}_{j, t,\tau}\bar{e}^{d}_{i,\tau} ) - \sum_{i} \sum_{\tau \leqslant  t-1}\gamma^{d}_{j, t-1,\tau}\bar{e}^{d}_{i,\tau} \right ) - \sum_{i} \left (\bar{d}_{i,t} - \bar{d}_{i,t-1} + \bar{e}^{d}_{i, t} - \bar{e}^{d}_{i, t-1} \right ) 
 \end{dmath*}
 
 \begin{dmath*}
-    \sum_{q} \left ( \bar{g}^{w}_{q, t} - \bar{g}^{w}_{q, t-1} \right) + \sum_{p} \left ( \bar{g}^{s}_{p, t} - \bar{g}^{s}_{p, t-1} \right ) + \sum_{j\neq{slack}} \left ( g^{0}_{j,t} - g^{0}_{j,t-1} \right) - \sum_{i} \left (\bar{d}_{i,t} - \bar{d}_{i,t-1} \right ) + \sum_{q} \left ( \bar{e}^{w}_{q,t} - \bar{e}^{w}_{q,t-1} \right) + \sum_{p} \left ( \bar{e}^{s}_{p,t} - \bar{e}^{s}_{p,t-1} \right ) - \sum_{i} \left ( \bar{e}^{d}_{i, t} - \bar{e}^{d}_{i, t-1} \right ) + \sum_{j\neq{slack}} \left ( \sum_{q} \sum_{t \leqslant  \tau}\gamma^{w}_{j, t, q, \tau} \bar{e}^{w}_{q,\tau} - \sum_{q} \sum_{t-1 \leqslant  \tau}\gamma^{w}_{j, t-1, q, \tau} \bar{e}^{w}_{q,\tau} + \sum_{p} \sum_{t \leqslant  \tau}\gamma^{s}_{j, t, p, \tau}\bar{e}^{s}_{p,\tau} - \sum_{p} \sum_{t-1 \leqslant  \tau}\gamma^{s}_{j, t-1, p, \tau}\bar{e}^{s}_{p,\tau} + \sum_{i} \sum_{t \leqslant  \tau}\gamma^{d}_{j, t,\tau}\bar{e}^{d}_{i,\tau} - \sum_{i} \sum_{t-1 \leqslant  \tau}\gamma^{d}_{j, t-1,\tau}\bar{e}^{d}_{i,\tau} \right )
+    \sum_{q} \left ( \bar{g}^{w}_{q, t} - \bar{g}^{w}_{q, t-1} \right) + \sum_{p} \left ( \bar{g}^{s}_{p, t} - \bar{g}^{s}_{p, t-1} \right ) + \sum_{j\neq{ref}} \left ( g^{0}_{j,t} - g^{0}_{j,t-1} \right) - \sum_{i} \left (\bar{d}_{i,t} - \bar{d}_{i,t-1} \right ) + \sum_{q} \left ( \bar{e}^{w}_{q,t} - \bar{e}^{w}_{q,t-1} \right) + \sum_{p} \left ( \bar{e}^{s}_{p,t} - \bar{e}^{s}_{p,t-1} \right ) - \sum_{i} \left ( \bar{e}^{d}_{i, t} - \bar{e}^{d}_{i, t-1} \right ) + \sum_{j\neq{ref}} \left ( \sum_{q} \sum_{\tau \leqslant  t}\gamma^{w}_{j, t, q, \tau} \bar{e}^{w}_{q,\tau} - \sum_{q} \sum_{\tau \leqslant  t-1}\gamma^{w}_{j, t-1, q, \tau} \bar{e}^{w}_{q,\tau} + \sum_{p} \sum_{\tau \leqslant  t}\gamma^{s}_{j, t, p, \tau}\bar{e}^{s}_{p,\tau} - \sum_{p} \sum_{\tau \leqslant  t-1}\gamma^{s}_{j, t-1, p, \tau}\bar{e}^{s}_{p,\tau} + \sum_{i} \sum_{\tau \leqslant  t}\gamma^{d}_{j, t,\tau}\bar{e}^{d}_{i,\tau} - \sum_{i} \sum_{\tau \leqslant  t-1}\gamma^{d}_{j, t-1,\tau}\bar{e}^{d}_{i,\tau} \right )
 \end{dmath*}
 
 Agrupando lo errores tenemos:
 
 \begin{align*}
-    \text{Solar:} & \sum_{p} \left ( \bar{e}^{s}_{p,t} - \bar{e}^{s}_{p,t-1} \right ) + \sum_{j\neq{slack}}\sum_{p} \sum_{t \leqslant  \tau}\gamma^{s}_{j, t, p, \tau}\bar{e}^{s}_{p,\tau} - \sum_{j\neq{slack}}\sum_{p} \sum_{t-1 \leqslant  \tau}\gamma^{s}_{j, t-1, p, \tau}\bar{e}^{s}_{p,\tau}  \\
-    \text{Eólico:} &  \sum_{q} \left ( \bar{e}^{w}_{q,t} - \bar{e}^{w}_{q,t-1} \right) + \sum_{j\neq{slack}}\sum_{q} \sum_{t \leqslant  \tau}\gamma^{w}_{j, t, q, \tau} \bar{e}^{w}_{q,\tau} - \sum_{j\neq{slack}}\sum_{q} \sum_{t-1 \leqslant  \tau}\gamma^{w}_{j, t-1, q, \tau} \bar{e}^{w}_{q,\tau} \\
-    \text{Demanda:} & - \sum_{i} \left ( \bar{e}^{d}_{i, t} - \bar{e}^{d}_{i, t-1} \right ) + \sum_{j\neq{slack}}\sum_{i} \sum_{t \leqslant  \tau}\gamma^{d}_{j, t,\tau}\bar{e}^{d}_{i,\tau} - \sum_{j\neq{slack}}\sum_{i} \sum_{t-1 \leqslant  \tau}\gamma^{d}_{j, t-1,\tau}\bar{e}^{d}_{i,\tau} \\
+    \text{Solar:} & \sum_{p} \left ( \bar{e}^{s}_{p,t} - \bar{e}^{s}_{p,t-1} \right ) + \sum_{j\neq{ref}}\sum_{p} \sum_{\tau \leqslant  t}\gamma^{s}_{j, t, p, \tau}\bar{e}^{s}_{p,\tau} - \sum_{j\neq{ref}}\sum_{p} \sum_{\tau \leqslant  t-1}\gamma^{s}_{j, t-1, p, \tau}\bar{e}^{s}_{p,\tau}  \\
+    \text{Eólico:} &  \sum_{q} \left ( \bar{e}^{w}_{q,t} - \bar{e}^{w}_{q,t-1} \right) + \sum_{j\neq{ref}}\sum_{q} \sum_{\tau \leqslant  t}\gamma^{w}_{j, t, q, \tau} \bar{e}^{w}_{q,\tau} - \sum_{j\neq{ref}}\sum_{q} \sum_{\tau \leqslant  t-1}\gamma^{w}_{j, t-1, q, \tau} \bar{e}^{w}_{q,\tau} \\
+    \text{Demanda:} & - \sum_{i} \left ( \bar{e}^{d}_{i, t} - \bar{e}^{d}_{i, t-1} \right ) + \sum_{j\neq{ref}}\sum_{i} \sum_{\tau \leqslant  t}\gamma^{d}_{j, t,\tau}\bar{e}^{d}_{i,\tau} - \sum_{j\neq{ref}}\sum_{i} \sum_{\tau \leqslant  t-1}\gamma^{d}_{j, t-1,\tau}\bar{e}^{d}_{i,\tau} \\
 \end{align*}
 
 \begin{align*}
-    \text{Solar:} & \sum_{p} \bar{e}^{s}_{p,t} - \sum_{p}\bar{e}^{s}_{p,t-1} + \sum_{j\neq{slack}}\sum_{p} \sum_{t \leqslant  \tau}\gamma^{s}_{j, t, p, \tau}\bar{e}^{s}_{p,\tau} - \sum_{j\neq{slack}}\sum_{p} \sum_{t-1 \leqslant  \tau}\gamma^{s}_{j, t-1, p, \tau}\bar{e}^{s}_{p,\tau}  \\
-    \text{Eólico:} & \sum_{q} \bar{e}^{w}_{q,t} - \sum_{q}\bar{e}^{w}_{q,t-1} + \sum_{j\neq{slack}}\sum_{q} \sum_{t \leqslant  \tau}\gamma^{w}_{j, t, q, \tau} \bar{e}^{w}_{q,\tau} - \sum_{j\neq{slack}}\sum_{q} \sum_{t-1 \leqslant  \tau}\gamma^{w}_{j, t-1, q, \tau} \bar{e}^{w}_{q,\tau} \\
-    \text{Demanda:} & - \sum_{i} \bar{e}^{d}_{i, t} + \sum_{i} \bar{e}^{d}_{i, t-1} + \sum_{j\neq{slack}}\sum_{i} \sum_{t \leqslant  \tau}\gamma^{d}_{j, t,\tau}\bar{e}^{d}_{i,\tau} - \sum_{j\neq{slack}}\sum_{i} \sum_{t-1 \leqslant  \tau}\gamma^{d}_{j, t-1,\tau}\bar{e}^{d}_{i,\tau} \\
+    \text{Solar:} & \sum_{p} \bar{e}^{s}_{p,t} - \sum_{p}\bar{e}^{s}_{p,t-1} + \sum_{j\neq{ref}}\sum_{p} \sum_{\tau \leqslant  t}\gamma^{s}_{j, t, p, \tau}\bar{e}^{s}_{p,\tau} - \sum_{j\neq{ref}}\sum_{p} \sum_{\tau \leqslant  t-1}\gamma^{s}_{j, t-1, p, \tau}\bar{e}^{s}_{p,\tau}  \\
+    \text{Eólico:} & \sum_{q} \bar{e}^{w}_{q,t} - \sum_{q}\bar{e}^{w}_{q,t-1} + \sum_{j\neq{ref}}\sum_{q} \sum_{\tau \leqslant  t}\gamma^{w}_{j, t, q, \tau} \bar{e}^{w}_{q,\tau} - \sum_{j\neq{ref}}\sum_{q} \sum_{\tau \leqslant  t-1}\gamma^{w}_{j, t-1, q, \tau} \bar{e}^{w}_{q,\tau} \\
+    \text{Demanda:} & - \sum_{i} \bar{e}^{d}_{i, t} + \sum_{i} \bar{e}^{d}_{i, t-1} + \sum_{j\neq{ref}}\sum_{i} \sum_{\tau \leqslant  t}\gamma^{d}_{j, t,\tau}\bar{e}^{d}_{i,\tau} - \sum_{j\neq{ref}}\sum_{i} \sum_{\tau \leqslant  t-1}\gamma^{d}_{j, t-1,\tau}\bar{e}^{d}_{i,\tau} \\
 \end{align*}
 
 \begin{align*}
-    \text{Solar:} & \sum_{p} \left ( \bar{e}^{s}_{p,t} - \bar{e}^{s}_{p,t-1} + \sum_{j\neq{slack}}\sum_{t \leqslant  \tau}\gamma^{s}_{j, t, p, \tau}\bar{e}^{s}_{p,\tau} - \sum_{j\neq{slack}}\sum_{t-1 \leqslant  \tau}\gamma^{s}_{j, t-1, p, \tau}\bar{e}^{s}_{p,\tau} \right )  \\
-    \text{Eólico:} & \sum_{q} \left ( \bar{e}^{w}_{q,t} - \bar{e}^{w}_{q,t-1} + \sum_{j\neq{slack}}\sum_{t \leqslant  \tau}\gamma^{w}_{j, t, q, \tau} \bar{e}^{w}_{q,\tau} - \sum_{j\neq{slack}}\sum_{t-1 \leqslant \tau}\gamma^{w}_{j, t-1, q, \tau} \bar{e}^{w}_{q,\tau} \right )\\
-    \text{Demanda:} & \sum_{i} \left ( - \bar{e}^{d}_{i, t} + \bar{e}^{d}_{i, t-1} + \sum_{j\neq{slack}}\sum_{t \leqslant  \tau}\gamma^{d}_{j, t,\tau}\bar{e}^{d}_{i,\tau} - \sum_{j\neq{slack}}\sum_{t-1 \leqslant  \tau}\gamma^{d}_{j, t-1,\tau}\bar{e}^{d}_{i,\tau} \right ) \\
+    \text{Solar:} & \sum_{p} \left ( \bar{e}^{s}_{p,t} + \sum_{j\neq{ref}}\sum_{\tau \leqslant  t}\gamma^{s}_{j, t, p, \tau}\bar{e}^{s}_{p,\tau} - \bar{e}^{s}_{p,t-1} - \sum_{j\neq{ref}}\sum_{\tau \leqslant  t-1}\gamma^{s}_{j, t-1, p, \tau}\bar{e}^{s}_{p,\tau} \right )  \\
+    \text{Eólico:} & \sum_{q} \left ( \bar{e}^{w}_{q,t} + \sum_{j\neq{ref}}\sum_{\tau \leqslant  t}\gamma^{w}_{j, t, q, \tau} \bar{e}^{w}_{q,\tau} - \bar{e}^{w}_{q,t-1} - \sum_{j\neq{ref}}\sum_{t-1 \leqslant \tau}\gamma^{w}_{j, t-1, q, \tau} \bar{e}^{w}_{q,\tau} \right )\\
+    \text{Demanda:} & \sum_{i} \left ( - \bar{e}^{d}_{i, t} + \sum_{j\neq{ref}}\sum_{\tau \leqslant  t}\gamma^{d}_{j, t,\tau}\bar{e}^{d}_{i,\tau} + \bar{e}^{d}_{i, t-1} - \sum_{j\neq{ref}}\sum_{\tau \leqslant  t-1}\gamma^{d}_{j, t-1,\tau}\bar{e}^{d}_{i,\tau} \right ) \\
 \end{align*}
 
 \begin{align*}
-    \text{Solar:} & \sum_{p} \left ( \bar{e}^{s}_{p,t} - \bar{e}^{s}_{p,t-1} + \sum_{j\neq{slack}}\gamma^{s}_{j, t, p, t}\bar{e}^{s}_{p,t} + \sum_{j\neq{slack}}\sum_{t-1 \leqslant  \tau}\gamma^{s}_{j, t, p, \tau}\bar{e}^{s}_{p,\tau} - \sum_{j\neq{slack}}\sum_{t-1 \leqslant  \tau}\gamma^{s}_{j, t-1, p, \tau}\bar{e}^{s}_{p,\tau} \right )  \\
-    \text{Eólico:} & \sum_{q} \left ( \bar{e}^{w}_{q,t} - \bar{e}^{w}_{q,t-1} + \sum_{j\neq{slack}}\gamma^{w}_{j, t, q, t} \bar{e}^{w}_{q,t} + \sum_{j\neq{slack}}\sum_{t-1 \leqslant  \tau}\gamma^{w}_{j, t, q, \tau} \bar{e}^{w}_{q,\tau} - \sum_{j\neq{slack}}\sum_{t-1 \leqslant \tau}\gamma^{w}_{j, t-1, q, \tau} \bar{e}^{w}_{q,\tau} \right )\\
-    \text{Demanda:} & \sum_{i} \left ( - \bar{e}^{d}_{i, t} + \bar{e}^{d}_{i, t-1} + \sum_{j\neq{slack}}\gamma^{d}_{j, t,t}\bar{e}^{d}_{i,t} + \sum_{j\neq{slack}}\sum_{t-1 \leqslant  \tau}\gamma^{d}_{j, t,\tau}\bar{e}^{d}_{i,\tau} - \sum_{j\neq{slack}}\sum_{t-1 \leqslant  \tau}\gamma^{d}_{j, t-1,\tau}\bar{e}^{d}_{i,\tau} \right ) \\
+    \text{Solar:} & \sum_{p} \left ( \sum_{\tau \leqslant  t} \left ( 1_{\tau = t} + \sum_{j\neq{ref}}\gamma^{s}_{j, t, p, \tau} \right ) \bar{e}^{s}_{p,\tau} - \sum_{\tau \leqslant  t-1} \left ( 1_{\tau = t-1} + \sum_{j\neq{ref}}\gamma^{s}_{j, t-1, p, \tau} \right ) \bar{e}^{s}_{p,\tau} \right )  \\
+    \text{Eólico:} & \sum_{q} \left ( \sum_{\tau \leqslant  t} \left ( 1_{\tau = t} + \sum_{j\neq{ref}}\gamma^{w}_{j, t, q, \tau} \right ) \bar{e}^{w}_{q,\tau} - \sum_{t-1 \leqslant \tau} \left ( 1_{\tau = t-1} + \sum_{j\neq{ref}}\gamma^{w}_{j, t-1, q, \tau} \right ) \bar{e}^{w}_{q,\tau} \right )\\
+    \text{Demanda:} & \sum_{i} \left ( \sum_{\tau \leqslant  t} \left (- 1_{\tau = t} + \sum_{j\neq{ref}}\gamma^{d}_{j, t,\tau} \right ) \bar{e}^{d}_{i,\tau} + sum_{\tau \leqslant  t-1} \left ( 1_{\tau = t-1} - \sum_{j\neq{ref}}\gamma^{d}_{j, t-1,\tau} \right ) \bar{e}^{d}_{i,\tau} \right ) \\
 \end{align*}
 
 \begin{align*}
-    \text{Solar:} & \sum_{p} \left ( \bar{e}^{s}_{p,t} - \bar{e}^{s}_{p,t-1} + \sum_{j\neq{slack}}\gamma^{s}_{j, t, p, t}\bar{e}^{s}_{p,t} + \sum_{j\neq{slack}}\sum_{t-1 \leqslant  \tau}\bar{e}^{s}_{p,\tau} \left ( \gamma^{s}_{j, t, p, \tau} - \gamma^{s}_{j, t-1, p, \tau} \right ) \right )  \\
-    \text{Eólico:} & \sum_{q} \left ( \bar{e}^{w}_{q,t} - \bar{e}^{w}_{q,t-1} + \sum_{j\neq{slack}}\gamma^{w}_{j, t, q, t} \bar{e}^{w}_{q,t} + \sum_{j\neq{slack}}\sum_{t-1 \leqslant  \tau}\bar{e}^{w}_{q,\tau}\left( \gamma^{w}_{j, t, q, \tau} - \gamma^{w}_{j, t-1, q, \tau} \right ) \right )\\
-    \text{Demanda:} & \sum_{i} \left ( - \bar{e}^{d}_{i, t} + \bar{e}^{d}_{i, t-1} + \sum_{j\neq{slack}}\gamma^{d}_{j, t,t}\bar{e}^{d}_{i,t} + \sum_{j\neq{slack}}\sum_{t-1 \leqslant  \tau}\bar{e}^{d}_{i,\tau}\left(\gamma^{d}_{j, t,\tau} - \gamma^{d}_{j, t-1,\tau} \right ) \right )\\
+    \text{Solar:} & \sum_{p}\sum_{j} \left ( \sum_{\tau \leqslant  t} \left ( 1_{\tau = t \wedge j = ref} + \gamma^{s}_{j, t, p, \tau}\cdot 1_{j\neq{ref}} \right ) - \sum_{\tau \leqslant  t-1} \left ( 1_{\tau = t-1 \wedge j = ref} + \gamma^{s}_{j, t-1, p, \tau}\cdot 1_{j\neq{ref}} \right ) \right ) \bar{e}^{s}_{p,\tau} \\
+    \text{Eólico:} & \sum_{q}\sum_{j} \left ( \sum_{\tau \leqslant  t} \left ( 1_{\tau = t \wedge j = ref} + \gamma^{w}_{j, t, q, \tau}\cdot 1_{j\neq{ref}} \right ) - \sum_{t-1 \leqslant \tau} \left ( 1_{\tau = t-1 \wedge j = ref} + \gamma^{w}_{j, t-1, q, \tau}\cdot 1_{j\neq{ref}} \right ) \right ) \bar{e}^{w}_{q,\tau} \\
+    \text{Demanda:} & \sum_{i}\sum_{j} \left ( \sum_{\tau \leqslant  t} \left (- 1_{\tau = t \wedge j = ref} + \gamma^{d}_{j, t,\tau}\cdot 1_{j\neq{ref}} \right ) + \sum_{\tau \leqslant  t-1} \left ( 1_{\tau = t-1 \wedge j = ref} - \sum_{j\neq{ref}}\gamma^{d}_{j, t-1,\tau}\cdot 1_{j\neq{ref}} \right ) \right ) \bar{e}^{d}_{i,\tau} \\
 \end{align*}
 
-Por simplicidad saco la primera sumatoria
+Por simplicidad saco las primera sumatorias y los términos asociados al error
 
 \begin{align*}
-    \text{Solar*:} &  \bar{e}^{s}_{p,t} + \sum_{j\neq{slack}}\gamma^{s}_{j, t, p, t}\bar{e}^{s}_{p,t} + \sum_{j\neq{slack}}\sum_{t-2 \leqslant  \tau}\bar{e}^{s}_{p,\tau} \left ( \gamma^{s}_{j, t, p, \tau} - \gamma^{s}_{j, t-1, p, \tau} \right ) \\
-    & - \bar{e}^{s}_{p,t-1} + \sum_{j\neq{slack}}\bar{e}^{s}_{p,t-1} \left ( \gamma^{s}_{j, t, p, t-1} - \gamma^{s}_{j, t-1, p, t-1} \right )\\
-    & \\
-    \text{Eólico*:} & \bar{e}^{w}_{q,t} + \sum_{j\neq{slack}}\gamma^{w}_{j, t, q, t} \bar{e}^{w}_{q,t} + \sum_{j\neq{slack}}\sum_{t-2 \leqslant  \tau}\bar{e}^{w}_{q,\tau}\left( \gamma^{w}_{j, t, q, \tau} - \gamma^{w}_{j, t-1, q, \tau} \right )\\
-    & - \bar{e}^{w}_{q,t-1} + \sum_{j\neq{slack}}\bar{e}^{w}_{q,t-1}\left( \gamma^{w}_{j, t, q, t-1} - \gamma^{w}_{j, t-1, q, t-1} \right ) \\
-    & \\
-    \text{Demanda*:} & - \bar{e}^{d}_{i, t} + \sum_{j\neq{slack}}\gamma^{d}_{j, t,t}\bar{e}^{d}_{i,t} + \sum_{j\neq{slack}}\sum_{t-2 \leqslant  \tau}\bar{e}^{d}_{i,\tau}\left(\gamma^{d}_{j, t,\tau} - \gamma^{d}_{j, t-1,\tau} \right ) \\
-    & + \bar{e}^{d}_{i, t-1} + \sum_{j\neq{slack}}\bar{e}^{d}_{i,t-1}\left(\gamma^{d}_{j, t,t-1} - \gamma^{d}_{j, t-1,t-1} \right ) \\
+    \text{Solar*:} & \sum_{\tau \leqslant  t} \left ( 1_{\tau = t \wedge j = ref} + \gamma^{s}_{j, t, p, \tau}\cdot 1_{j\neq{ref}} \right ) \\
+    & - \sum_{\tau \leqslant  t-1} \left ( 1_{\tau = t-1 \wedge j = ref} + \gamma^{s}_{j, t-1, p, \tau}\cdot 1_{j\neq{ref}} \right ) \\
+    \text{Eólico*:} & \sum_{\tau \leqslant  t} \left ( 1_{\tau = t \wedge j = ref} + \gamma^{w}_{j, t, q, \tau}\cdot 1_{j\neq{ref}} \right ) \\
+    & - \sum_{t-1 \leqslant \tau} \left ( 1_{\tau = t-1 \wedge j = ref} + \gamma^{w}_{j, t-1, q, \tau}\cdot 1_{j\neq{ref}} \right )  \\
+    \text{Demanda*:} &  \sum_{\tau \leqslant  t} \left (- 1_{\tau = t \wedge j = ref} + \gamma^{d}_{j, t,\tau}\cdot 1_{j\neq{ref}} \right ) \\
+    & + \sum_{\tau \leqslant  t-1} \left ( 1_{\tau = t-1 \wedge j = ref} - \sum_{j\neq{ref}}\gamma^{d}_{j, t-1,\tau}\cdot 1_{j\neq{ref}} \right )  \\
+\end{align*}
+
+Evaluamos las sumatorias que van hasta $t$ en $\tau = t$, para que ahora vayan hasta $\tau \leqslant t-1$
+
+\begin{align*}
+    \text{Solar*:} & \, 1_{\tau = t \wedge j = ref} + \gamma^{s}_{j, t, p, t}\cdot 1_{j\neq{ref}} \\
+    & + \sum_{\tau \leqslant  t-1} \left ( 1_{\tau = t \wedge j = ref} + \gamma^{s}_{j, t, p, \tau}\cdot 1_{j\neq{ref}} \right ) \\
+    & - \sum_{\tau \leqslant  t-1} \left ( 1_{\tau = t-1 \wedge j = ref} + \gamma^{s}_{j, t-1, p, \tau}\cdot 1_{j\neq{ref}} \right ) \\
+    \text{Eólico*:} & \, 1_{\tau = t \wedge j = ref} + \gamma^{w}_{j, t, q, t}\cdot 1_{j\neq{ref}} \\
+    & + \sum_{\tau \leqslant  t-1} \left ( 1_{\tau = t \wedge j = ref} + \gamma^{w}_{j, t, q, \tau}\cdot 1_{j\neq{ref}} \right ) \\
+    & - \sum_{\tau \leqslant t-1} \left ( 1_{\tau = t-1 \wedge j = ref} + \gamma^{w}_{j, t-1, q, \tau}\cdot 1_{j\neq{ref}} \right )  \\
+    \text{Demanda*:} & \, - 1_{\tau = t \wedge j = ref} + \gamma^{d}_{j, t,t}\cdot 1_{j\neq{ref}} \\
+    & \sum_{\tau \leqslant  t-1} \left (- 1_{\tau = t \wedge j = ref} + \gamma^{d}_{j, t,\tau}\cdot 1_{j\neq{ref}} \right ) \\
+    & + \sum_{\tau \leqslant  t-1} \left ( 1_{\tau = t-1 \wedge j = ref} - \gamma^{d}_{j, t-1,\tau}\cdot 1_{j\neq{ref}} \right )  \\
+\end{align*}
+
+Simplificando las operaciones lógicas
+
+\begin{align*}
+    \text{Solar*:} & \, 1_{\tau = t \wedge j = ref} + \gamma^{s}_{j, t, p, t}\cdot 1_{j\neq{ref}} \\
+    & + \sum_{\tau \leqslant  t-1} \left ( \gamma^{s}_{j, t, p, \tau}\cdot 1_{j\neq{ref}} \right ) \\
+    & - \sum_{\tau \leqslant  t-1} \left ( 1_{\tau = t-1 \wedge j = ref} + \gamma^{s}_{j, t-1, p, \tau}\cdot 1_{j\neq{ref}} \right ) \\
+    \text{Eólico*:} & \, 1_{\tau = t \wedge j = ref} + \gamma^{w}_{j, t, q, t}\cdot 1_{j\neq{ref}} \\
+    & + \sum_{\tau \leqslant  t-1} \left ( \gamma^{w}_{j, t, q, \tau}\cdot 1_{j\neq{ref}} \right ) \\
+    & - \sum_{t-1 \leqslant \tau} \left ( 1_{\tau = t-1 \wedge j = ref} + \gamma^{w}_{j, t-1, q, \tau}\cdot 1_{j\neq{ref}} \right )  \\
+    \text{Demanda*:} & \, - 1_{\tau = t \wedge j = ref} + \gamma^{d}_{j, t,t}\cdot 1_{j\neq{ref}} \\
+    & \sum_{\tau \leqslant  t-1} \left ( \gamma^{d}_{j, t,\tau}\cdot 1_{j\neq{ref}} \right ) \\
+    & + \sum_{\tau \leqslant  t-1} \left ( 1_{\tau = t-1 \wedge j = ref} - \gamma^{d}_{j, t-1,\tau}\cdot 1_{j\neq{ref}} \right )  \\
 \end{align*}
 
 \begin{align*}
-    \text{Solar*:} &  \bar{e}^{s}_{p,t} + \sum_{j\neq{slack}}\gamma^{s}_{j, t, p, t}\bar{e}^{s}_{p,t} + \sum_{j\neq{slack}}\sum_{t-2 \leqslant  \tau}\bar{e}^{s}_{p,\tau} \left ( \gamma^{s}_{j, t, p, \tau} - \gamma^{s}_{j, t-1, p, \tau} \right ) \\
-    & - \bar{e}^{s}_{p,t-1} + \sum_{j\neq{slack}}\bar{e}^{s}_{p,t-1} \left ( \gamma^{s}_{j, t, p, t-1} - \gamma^{s}_{j, t-1, p, t-1} \right )\\
-    & \\
-    \text{Eólico*:} & \bar{e}^{w}_{q,t} + \sum_{j\neq{slack}}\gamma^{w}_{j, t, q, t} \bar{e}^{w}_{q,t} + \sum_{j\neq{slack}}\sum_{t-2 \leqslant  \tau}\bar{e}^{w}_{q,\tau}\left( \gamma^{w}_{j, t, q, \tau} - \gamma^{w}_{j, t-1, q, \tau} \right )\\
-    & - \bar{e}^{w}_{q,t-1} + \sum_{j\neq{slack}}\bar{e}^{w}_{q,t-1}\left( \gamma^{w}_{j, t, q, t-1} - \gamma^{w}_{j, t-1, q, t-1} \right ) \\
-    & \\
-    \text{Demanda*:} & - \bar{e}^{d}_{i, t} + \sum_{j\neq{slack}}\gamma^{d}_{j, t,t}\bar{e}^{d}_{i,t} + \sum_{j\neq{slack}}\sum_{t-2 \leqslant  \tau}\bar{e}^{d}_{i,\tau}\left(\gamma^{d}_{j, t,\tau} - \gamma^{d}_{j, t-1,\tau} \right ) \\
-    & + \bar{e}^{d}_{i, t-1} + \sum_{j\neq{slack}}\bar{e}^{d}_{i,t-1}\left(\gamma^{d}_{j, t,t-1} - \gamma^{d}_{j, t-1,t-1} \right ) \\
+    \text{Solar*:} & \, 1_{\tau = t \wedge j = ref} + \gamma^{s}_{j, t, p, t}\cdot 1_{j\neq{ref}} \\
+    & + \sum_{\tau \leqslant  t-1} \left ( \left ( \gamma^{s}_{j, t, p, \tau} - \gamma^{s}_{j, t-1, p, \tau} \right ) \cdot 1_{j\neq{ref}} - 1_{\tau = t-1 \wedge j = ref} \right ) \\
+    \text{Eólico*:} & \, 1_{\tau = t \wedge j = ref} + \gamma^{w}_{j, t, q, t}\cdot 1_{j\neq{ref}} \\
+    & + \sum_{\tau \leqslant  t-1} \left ( \left ( \gamma^{w}_{j, t, q, \tau} - \gamma^{w}_{j, t-1, q, \tau} \right ) \cdot 1_{j\neq{ref}} - 1_{\tau = t-1 \wedge j = ref} \right )  \\
+    \text{Demanda*:} & \, - 1_{\tau = t \wedge j = ref} + \gamma^{d}_{j, t,t}\cdot 1_{j\neq{ref}} \\
+    & \sum_{\tau \leqslant  t-1} \left ( \left ( \gamma^{d}_{j, t,\tau} - \gamma^{d}_{j, t-1,\tau} \right ) \cdot 1_{j\neq{ref}} + 1_{\tau = t-1 \wedge j = ref} \right )  \\
+\end{align*}
+
+Ahora añado condiciones lógicas para sacar la $\sum_{\tau \leqslant t}$
+
+\begin{align*}
+    \text{Solar**:} & \, 1_{\tau = t \wedge j = ref} + \gamma^{s}_{j, t, p, t}\cdot 1_{j\neq{ref}} \\
+    & + \left ( \left ( \gamma^{s}_{j, t, p, \tau} - \gamma^{s}_{j, t-1, p, \tau} \right ) \cdot 1_{j\neq{ref}} - 1_{\tau = t-1 \wedge j = ref} \right ) \cdot 1_{\tau \leqslant  t-1}\\
+    \text{Eólico**:} & \, 1_{\tau = t \wedge j = ref} + \gamma^{w}_{j, t, q, t}\cdot 1_{j\neq{ref}} \\
+    & + \left ( \left ( \gamma^{w}_{j, t, q, \tau} - \gamma^{w}_{j, t-1, q, \tau} \right ) \cdot 1_{j\neq{ref}} - 1_{\tau = t-1 \wedge j = ref} \right ) \cdot 1_{\tau \leqslant  t-1} \\
+    \text{Demanda**:} & \, - 1_{\tau = t \wedge j = ref} + \gamma^{d}_{j, t,t}\cdot 1_{j\neq{ref}} \\
+    & \left ( \left ( \gamma^{d}_{j, t,\tau} - \gamma^{d}_{j, t-1,\tau} \right ) \cdot 1_{j\neq{ref}} + 1_{\tau = t-1 \wedge j = ref} \right ) \cdot 1_{\tau \leqslant  t-1} \\
+\end{align*}
+
+simplificando de nuevo las restricciones lógicas.
+
+\begin{align*}
+    \text{Solar**:} & \, 1_{\tau = t}^{j = ref} - 1_{\tau = t-1}^{j = ref} + \gamma^{s}_{j, t, p, \tau}\cdot 1_{j\neq{ref}}^{\tau \leqslant t} - \gamma^{s}_{j, t-1, p, \tau} \cdot 1_{j\neq{ref}}^{\tau \leqslant t-1} \\
+    \text{Eólico**:} & \, 1_{\tau = t}^{j = ref} - 1_{\tau = t-1}^{j = ref} + \gamma^{w}_{j, t, q, \tau}\cdot 1_{j\neq{ref}}^{\tau \leqslant t} - \gamma^{w}_{j, t-1, q, \tau} \cdot 1_{j\neq{ref}}^{\tau \leqslant t-1}  \\
+    \text{Demanda**:} & \, - 1_{\tau = t }^{ j = ref} + 1_{\tau = t-1 }^{j = ref} + \gamma^{d}_{j, t,\tau} \cdot 1_{j\neq{ref}}^{\tau \leqslant t} - \gamma^{d}_{j, t-1,\tau} \cdot 1_{j\neq{ref}}^{\tau \leqslant  t-1} \\
 \end{align*}
 
 Finalmente la restricción completa se muestra a contiuación:
 
 \begin{dmath*}
-    -r^{down}_{ref} \leqslant \sum_{q} \left ( \bar{g}^{w}_{q, t} - \bar{g}^{w}_{q, t-1} \right) + \sum_{p} \left ( \bar{g}^{s}_{p, t} - \bar{g}^{s}_{p, t-1} \right ) + \sum_{j\neq{slack}} \left ( g^{0}_{j,t} - g^{0}_{j,t-1} \right) - \sum_{i} \left (\bar{d}_{i,t} - \bar{d}_{i,t-1} \right ) + \sum_{p}{rp,s,ref}_{p,t} + \sum_{q}u^{rp,w,ref}_{q,t} + \sum_{i}u^{rp,d,ref} \leqslant r^{up}_{ref}
+    -r^{down}_{ref} \leqslant \sum_{q} \left ( \bar{g}^{w}_{q, t} - \bar{g}^{w}_{q, t-1} \right) + \sum_{p} \left ( \bar{g}^{s}_{p, t} - \bar{g}^{s}_{p, t-1} \right ) + \sum_{j\neq{ref}} \left ( g^{0}_{j,t} - g^{0}_{j,t-1} \right) - \sum_{i} \left (\bar{d}_{i,t} - \bar{d}_{i,t-1} \right ) + \sum_{\tau \leqslant t}\sum_{j} \left ( \sum_{p}u^{rp,s,ref}_{j,t,p,\tau} + \sum_{q}u^{rp,w,ref}_{j,t,q,\tau} + \sum_{i}u^{rp,d,ref}_{i,t,\tau}\right ) \leqslant r^{up}_{ref} 
 \end{dmath*}
 
 \begin{align*}
-    -u^{rp,s,ref}_{p,t} \leqslant &  \bar{e}^{s,max}_{p,t} \left ( 1 + \sum_{j\neq{slack}}\gamma^{s}_{j, t, p, t} \right ) & \\
-    & - \bar{e}^{s,max}_{p,t-1} \left ( 1 + \sum_{j\neq{slack}} \left ( \gamma^{s}_{j, t, p, t-1} - \gamma^{s}_{j, t-1, p, t-1} \right ) \right ) & \\ 
-    & + \bar{e}^{s,max}_{p,\tau}\sum_{j\neq{slack}}\sum_{t-2 \leqslant  \tau} \left ( \gamma^{s}_{j, t, p, \tau} - \gamma^{s}_{j, t-1, p, \tau} \right )& \leqslant u^{rp,s,ref}_{p,t}\\
+    -u^{rp,s,ref}_{j,t,p,\tau} \leqslant &  \bar{e}^{s,max}_{p,\tau} \left ( 1_{\tau = t}^{j = ref} - 1_{\tau = t-1}^{j = ref} + \gamma^{s}_{j, t, p, \tau}\cdot 1_{j\neq{ref}}^{\tau \leqslant t} - \gamma^{s}_{j, t-1, p, \tau} \cdot 1_{j\neq{ref}}^{\tau \leqslant t-1} \right )& \leqslant u^{rp,s,ref}_{j,t,p,\tau}\\
     & \\
-    -u^{rp,w,ref}_{q,t} \leqslant & \bar{e}^{w,max}_{q,t} \left( 1 + \sum_{j\neq{slack}}\gamma^{w}_{j, t, q, t} \right ) & \\
-    & - \bar{e}^{w,max}_{q,t-1} \left ( 1 + \sum_{j\neq{slack}}\left( \gamma^{w}_{j, t, q, t-1} - \gamma^{w}_{j, t-1, q, t-1} \right )\right ) & \\
-    &  + \bar{e}^{w,max}_{q,\tau}\sum_{j\neq{slack}}\sum_{t-2 \leqslant  \tau}\left( \gamma^{w}_{j, t, q, \tau} - \gamma^{w}_{j, t-1, q, \tau} \right ) & \leqslant u^{rp,w,ref}_{q,t} \\
+    -u^{rp,w,ref}_{j,t,q,\tau} \leqslant & \bar{e}^{w,max}_{q,\tau} \left( 1_{\tau = t}^{j = ref} - 1_{\tau = t-1}^{j = ref} + \gamma^{w}_{j, t, q, \tau}\cdot 1_{j\neq{ref}}^{\tau \leqslant t} - \gamma^{w}_{j, t-1, q, \tau} \cdot 1_{j\neq{ref}}^{\tau \leqslant t-1} \right ) & \leqslant u^{rp,w,ref}_{j,t,q,\tau} \\
     & \\
-    -u^{rp,d,ref}_{i,t} \leqslant & \bar{e}^{d,max}_{i, t} \left ( -1 + \sum_{j\neq{slack}}\gamma^{d}_{j, t,t} \right ) &  \\
-    & + \bar{e}^{d,max}_{i, t-1} \left( 1 + \sum_{j\neq{slack}}\left(\gamma^{d}_{j, t,t-1} - \gamma^{d}_{j, t-1,t-1} \right ) \right ) & \\
-    & + \bar{e}^{d,max}_{i, \tau}\sum_{j\neq{slack}}\sum_{t-2 \leqslant  \tau}\left(\gamma^{d}_{j, t,\tau} - \gamma^{d}_{j, t-1,\tau} \right ) & \leqslant u^{rp,d,ref}_{i,t} \\
+    -u^{rp,d,ref}_{i,t,\tau} \leqslant & \bar{e}^{d,max}_{i, t} \left (  - 1_{\tau = t }^{ j = ref} + 1_{\tau = t-1 }^{j = ref} + \gamma^{d}_{j, t,\tau} \cdot 1_{j\neq{ref}}^{\tau \leqslant t} - \gamma^{d}_{j, t-1,\tau} \cdot 1_{j\neq{ref}}^{\tau \leqslant  t-1} \right ) & \leqslant u^{rp,d,ref}_{i,t,\tau} \\
 \end{align*}
