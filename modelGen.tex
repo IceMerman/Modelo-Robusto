@@ -165,6 +165,8 @@ g_{ref,t} = \sum_{i}d_{i,t} - \sum_{j}g_{j,t} - \sum_{q}{g}^{w}_{q, t} - \sum_{p
 -r^{down}_{ref} & \le \sum_{i}d_{i,t} - \sum_{j}g_{j,t} - \sum_{q}{g}^{w}_{q, t} - \sum_{p}{g}^{s}_{p, t} \\  &- \left ( \sum_{i}d_{i,t-1} - \sum_{j}g_{j,t-1} - \sum_{q}{g}^{w}_{q, t-1} - \sum_{p}{g}^{s}_{p, t-1} \right ) \le r^{up}_{ref}.
 \end{align*}
 
+%\begin{comment}
+
 \begin{align*}
 -r^{down}_{ref} &\le \sum_{i}d_{i,t} - \sum_{i}d_{i,t-1}  \\
  & - \sum_{j}g_{j,t} + \sum_{j}g_{j,t-1} \\
@@ -283,6 +285,8 @@ simplificando de nuevo las restricciones lógicas.
 \end{align*}
 
 Finalmente la restricción completa se muestra a contiuación:
+
+%\end{comment}
 
 \begin{dmath*}
     -r^{down}_{ref} \leqslant \sum_{q} \left ( \bar{g}^{w}_{q, t} - \bar{g}^{w}_{q, t-1} \right) + \sum_{p} \left ( \bar{g}^{s}_{p, t} - \bar{g}^{s}_{p, t-1} \right ) + \sum_{j\neq{ref}} \left ( g^{0}_{j,t} - g^{0}_{j,t-1} \right) - \sum_{i} \left (\bar{d}_{i,t} - \bar{d}_{i,t-1} \right ) + \sum_{\tau \leqslant t}\sum_{j} \left ( \sum_{p}u^{rp,s,ref}_{j,t,p,\tau} + \sum_{q}u^{rp,w,ref}_{j,t,q,\tau} + \sum_{i}u^{rp,d,ref}_{i,t,\tau}\right ) \leqslant r^{up}_{ref} 
